@@ -154,7 +154,7 @@ dwh/
 │   
 │
 ├── tests/                      # Executable tests scripts
-│   └── setup_project.py        # This setup script
+│   └── test_connection.py      # Connection test
 │
 ├── backups/                    # Weekly snapshots
 ├── logs/                       # Application logs
