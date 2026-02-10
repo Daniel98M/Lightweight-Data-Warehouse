@@ -31,7 +31,7 @@ def create_project_structure():
         "src/reporting",
 
         # Test modules
-        "tests"
+        "tests",
         
         # SQL queries
         "sql/queries",
@@ -117,6 +117,11 @@ logs/*.log
 # OS
 .DS_Store
 Thumbs.db
+
+# Virtual Environments
+.dwhenv
+venv
+.env
 """
     
     gitignore_path = base_path / ".gitignore"
