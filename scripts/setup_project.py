@@ -130,7 +130,7 @@ venv
         print("\n✓ Created: .gitignore")
     
     # Create a README.md template
-    readme_content = f"""# RRHH Data Warehouse
+    readme_content = f"""# Data Warehouse
 
 ## 📊 Overview
 Lightweight data warehouse for Business Intelligence using Python, DuckDB, and Parquet files.
