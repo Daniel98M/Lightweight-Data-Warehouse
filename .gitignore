@@ -1,0 +1,38 @@
+# DuckDB database files
+*.duckdb
+*.duckdb.wal
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Data files (don't commit large data files)
+data/raw/**/*.parquet
+data/raw/**/*.csv
+data/staging/*.parquet
+data/warehouse/*.parquet
+backups/*.parquet
+
+# Logs
+logs/*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtual Environments
+.dwhenv
+venv
+.env
