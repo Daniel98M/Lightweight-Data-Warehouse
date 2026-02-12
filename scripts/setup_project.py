@@ -60,9 +60,9 @@ def create_project_structure():
     current_date = datetime.now()
     raw_example_path = (
         base_path / "data" / "raw" / "case_history" / 
-        str(current_date.year) / 
-        f"{current_date.month:02d}" / 
-        f"{current_date.day:02d}"
+        f"year={str(current_date.year)}" / 
+        f"month={current_date.month:02d}" / 
+        f"day={current_date.day:02d}"
     )
     raw_example_path.mkdir(parents=True, exist_ok=True)
     print(f"\n✓ Created raw data structure example:")
@@ -141,7 +141,7 @@ dwh/
 ├── data/
 │   ├── raw/                    # Raw data partitioned by year/month/day
 │   │   └── case_history/
-│   │       └── YYYY/MM/DD/
+│   │       └── year=YYYY/month=MM/day=DD/
 │   ├── staging/                # Cleaned and validated data
 │   └── warehouse/              # Final dimensional model (dims + facts)
 │
