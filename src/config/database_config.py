@@ -75,5 +75,5 @@ def get_raw_data_path(date: datetime) -> Path:
 def get_raw_file_path(date: datetime) -> Path:
     """Get the full file path for a raw parquet file"""
     folder = get_raw_data_path(date)
-    filename = f"casos_rrhh_{date.strftime('%Y%m%d')}.parquet"
+    filename = f"case_history_{date.strftime('%Y%m%d')}.parquet"
     return folder / filename
