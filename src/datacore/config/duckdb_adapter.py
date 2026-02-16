@@ -20,7 +20,7 @@ class DuckDBAdapter(DatabaseInterface):
     
     def __init__(
         self, 
-        db_path: str = "rrhh.duckdb",
+        db_path: str = "dwh.duckdb",
         memory_limit: str = "4GB",
         threads: int = 4
     ):

@@ -20,7 +20,7 @@ class ParquetLoader:
     with Hive-style partitioning (year=YYYY/month=MM/day=DD/)
     """
     
-    def __init__(self, base_path: Path = RAW_DATA_PATH):
+    def __init__(self, base_path: Path = RAW_DATA_PATH, table_name: str = "fct_case_history", partitioning:bool = False):
         """
         Initialize ParquetLoader
         
@@ -28,6 +28,8 @@ class ParquetLoader:
             base_path: Base path for raw data storage
         """
         self.base_path = base_path
+        self.table_name= table_name
+        self.partitioning = partitioning
     
     def _get_hive_partition_path(self, extraction_date: datetime) -> Path:
         """
@@ -43,12 +45,17 @@ class ParquetLoader:
             >>> _get_hive_partition_path(datetime(2025, 2, 11))
             Path('data/raw/case_history/year=2025/month=02/day=11')
         """
-        return (
-            self.base_path / 
-            f"year={extraction_date.year}" / 
-            f"month={extraction_date.month:02d}" / 
-            f"day={extraction_date.day:02d}"
-        )
+        if self.partitioning:
+            return (
+                self.base_path / 
+                f"year={extraction_date.year}" / 
+                f"month={extraction_date.month:02d}" / 
+                f"day={extraction_date.day:02d}"
+            )
+        else: 
+            return (
+                self.base_path
+            )
     
     def load_from_csv(
         self, 
@@ -70,7 +77,7 @@ class ParquetLoader:
         Example:
             >>> loader = ParquetLoader()
             >>> parquet_path = loader.load_from_csv(
-            ...     'downloads/casos_20250211.csv',
+            ...     'downloads/cases_20250211.csv',
             ...     extraction_date=datetime(2025, 2, 11)
             ... )
         """
@@ -151,7 +158,7 @@ class ParquetLoader:
         ensure_path_exists(partition_path)
         
         # Generate filename
-        filename = f"case_history_{extraction_date.strftime('%Y%m%d')}.parquet"
+        filename = f"{self.table_name}_{extraction_date.strftime('%Y%m%d')}.parquet"
         output_path = partition_path / filename
         
         # Save with compression
